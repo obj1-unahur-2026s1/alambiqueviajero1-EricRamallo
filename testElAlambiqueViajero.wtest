@@ -1,0 +1,31 @@
+import vehiculos.*
+import recuerdos.*
+import luke.*
+
+describe "Luke de viaje" {
+    test "tiene suficiente combustible el vehiculo de Luke y es rapido" {
+      luke.cambiarVehiculo(alambiqueVeloz)
+      assert.that(luke.tieneSuficienteCombustible())
+      
+    }
+    test "el vehiculo de Luke es rapido" {
+      luke.cambiarVehiculo(chatarra)
+      assert.that(luke.esRapido())
+    }
+  test "puede viajar Luke a París en el alambique veloz" {
+    //luke.cambiarCiudadAVisitar(lasVegas)
+    luke.cambiarVehiculo(alambiqueVeloz)
+    assert.that(luke.puedeViajar(paris))
+  }
+  test "el recuerdo de Luke es el llavero si visita paris" {
+    luke.loDejaronPasar(paris)
+    //luke.cambiarRecuerdo(lasVegas)
+    assert.equals(llavero,luke.recuerdoLlevado())
+    
+  }
+  test "Luke viajo a 2 ciudades diferentes" {
+    luke.loDejaronPasar(paris)
+    luke.loDejaronPasar(bagdad)
+    assert.equals(2, luke.viajo())
+  }
+}
